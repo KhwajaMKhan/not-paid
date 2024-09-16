@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <script>
+        const dueDate = new Date('2024-08-30'); // Set your due date here
+        const startDate = new Date(); // The date when the script starts running
+        const totalDays = Math.ceil((dueDate - startDate) / (1000 * 60 * 60 * 24)); // Calculate the total number of days until the due date
+    
+        function updateOpacity() {
+            const currentDate = new Date();
+            const elapsedDays = Math.ceil((currentDate - startDate) / (1000 * 60 * 60 * 24));
+            const remainingDays = totalDays - elapsedDays;
+            const opacity = Math.max(remainingDays / totalDays, 0); // Ensure opacity doesn't go below 0
+    
+            document.body.style.opacity = opacity;
+    
+            if (remainingDays > 0) {
+                requestAnimationFrame(updateOpacity);
+            }
+        }
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentDate = new Date();
+            if (currentDate >= dueDate) {
+                document.body.style.opacity = 0; // Set opacity to 0 if the due date has passed
+            } else {
+                updateOpacity();
+            }
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Seasons</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Four Seasons</h1>
+    </header>
+    <section></section>
+        <h2>Spring</h2>
+        <p>Spring is the season of new beginnings. Fresh buds bloom, animals awaken and the earth seems to come to life again. Farmers and gardeners plant their seeds and temperatures slowly rise.</p>
+    </section>
+    <section></section>
+        <h2>Summer</h2>
+        <p>Summer is the hottest of the four temperate seasons, falling after spring and before autumn. At the summer solstice, the days are longest and the nights are shortest, with day-length decreasing as the season progresses after the solstice.</p>
+    </section>
+    <section></section>
+        <h2>Autumn</h2>
+        <p>Autumn, also known as fall in North American English, is one of the four temperate seasons. Autumn marks the transition from summer to winter, in September (Northern Hemisphere) or March (Southern Hemisphere), when the duration of daylight becomes noticeably shorter and the temperature cools considerably.</p>
+    </section>
+    <section></section>
+        <h2>Winter</h2>
+        <p>Winter is the coldest season of the year in polar and temperate zones. It occurs after autumn and before spring in each year. Winter is caused by the axis of the Earth in that hemisphere being oriented away from the Sun.</p>
+    </section>
+</body>
+</html>
